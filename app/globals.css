@@ -1,15 +1,42 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "SVN-Gilroy Light Italic.otf";
+  src:
+    url("/fonts/SVN-Gilroy%20Light%20Italic.otf") format("opentype"),
+    url("/fonts/SVN-Gilroy-Light-Italic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: "SVN-Gilroy Light Italic.otf";
+  src: url(https://statics.pancake.vn/web-media/8f/9a/a0/c0/c04c0f4…-w:0-h:0-l:100715-t:application/octet-stream.otf) format("opentype");
+  font-display: swap;
+} */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: "UTM Essendine CapsBold.ttf";
+  src:
+    url("/fonts/UTM%20Essendine%20CapsBold.ttf") format("truetype"),
+    url("/fonts/UTM-Essendine-CapsBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "SVN-Gilroy Light Italic.otf", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --font-essendine: "UTM Essendine CapsBold.ttf", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +49,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "SVN-Gilroy Light Italic.otf", sans-serif;
+}
+
+
+@font-face {
+  font-family: "UTM Essendine CapsBold.ttf";
+  src: url("https://statics.pancake.vn/web-media-262/95/c0/c5/f1/f820571601cfcdde853616fe55c407494e0f4ea392b3f72305134f47-w:0-h:0-l:52697-t:application/octet-stream.ttf") format("truetype");
+  font-display: swap;
 }
