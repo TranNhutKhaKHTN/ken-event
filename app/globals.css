@@ -2,11 +2,15 @@
 
 @font-face {
   font-family: "SVN-Gilroy Light Italic.otf";
-  src:
-    url("/fonts/SVN-Gilroy%20Light%20Italic.otf") format("opentype"),
-    url("/fonts/SVN-Gilroy-Light-Italic.otf") format("opentype");
+  src: url("https://statics.pancake.vn/web-media/8f/9a/a0/c0/c04c0f44042c6cca91b1643c0f23024743ae88f605e205e37f1f11e5-w:0-h:0-l:100715-t:application/octet-stream.otf") format("opentype");
   font-weight: 300;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UTM Essendine CapsBold.ttf";
+  src: url("https://statics.pancake.vn/web-media-262/95/c0/c5/f1/f820571601cfcdde853616fe55c407494e0f4ea392b3f72305134f47-w:0-h:0-l:52697-t:application/octet-stream.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -21,15 +25,6 @@
   --foreground: #171717;
 }
 
-@font-face {
-  font-family: "UTM Essendine CapsBold.ttf";
-  src:
-    url("/fonts/UTM%20Essendine%20CapsBold.ttf") format("truetype"),
-    url("/fonts/UTM-Essendine-CapsBold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 @theme inline {
   --color-background: var(--background);
@@ -53,8 +48,4 @@ body {
 }
 
 
-@font-face {
-  font-family: "UTM Essendine CapsBold.ttf";
-  src: url("https://statics.pancake.vn/web-media-262/95/c0/c5/f1/f820571601cfcdde853616fe55c407494e0f4ea392b3f72305134f47-w:0-h:0-l:52697-t:application/octet-stream.ttf") format("truetype");
-  font-display: swap;
-}
+

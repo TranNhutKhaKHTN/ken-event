@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=" +
   encodeURIComponent(
@@ -39,7 +41,7 @@ function CalendarIcon() {
         fontSize="12"
         fontWeight="600"
       >
-        20
+        14
       </text>
     </svg>
   );
@@ -69,9 +71,15 @@ function MapPinIcon() {
 
 const EventInfo = () => {
   return (
-    <section
-      className="mx-4 mt-10 mb-8 rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+    <motion.section
+      className="mx-4 font-essendine mt-10 mb-8 rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       aria-labelledby="event-info-title"
+      initial={{ y: 200, opacity: 0.5 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{
+        once: true,
+      }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
     >
       <h2
         id="event-info-title"
@@ -87,27 +95,61 @@ const EventInfo = () => {
       </div>
 
       <div className="mt-6 flex gap-1">
-        <CalendarIcon />
-        <div className="min-w-0 flex-1 pt-0.5">
+        <motion.div
+          initial={{ x: -20, opacity: 0.1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{
+            once: true,
+          }}
+        >
+          <CalendarIcon />
+        </motion.div>
+        <motion.div
+          className="min-w-0 flex-1 pt-0.5"
+          initial={{ x: 300, opacity: 0.1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{
+            once: true,
+          }}
+        >
           <p className="text-[14px] uppercase leading-snug text-black">
             19:00 - CHỦ NHẬT
           </p>
-          <p className="mt-1 text-[12px] font-normal leading-relaxed text-neutral-800">
+          <p className="mt-1 text-[11px] font-normal leading-relaxed text-neutral-800">
             Ngày 14 tháng 06 năm 2026
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-6 flex gap-1">
-        <MapPinIcon />
-        <div className="min-w-0 flex-1 pt-0.5">
+        <motion.div
+          initial={{ x: -20, opacity: 0.1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{
+            once: true,
+          }}
+        >
+          <MapPinIcon />
+        </motion.div>
+        <motion.div
+          className="min-w-0 flex-1 pt-0.5"
+          initial={{ x: 300, opacity: 0.1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{
+            once: true,
+          }}
+        >
           <p className="text-[14px]  uppercase leading-snug text-black">
             TRUNG TÂM CUNG ỨNG DỊCH VỤ CÔNG PHƯỜNG BÌNH TRƯNG
           </p>
-          <p className="mt-1 text-[12px] font-normal leading-relaxed text-neutral-800">
+          <p className="mt-1 text-[11px] font-normal leading-relaxed text-neutral-800">
             200 Nguyễn Duy Trinh, Phường Bình Trưng, TP. HCM
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-8 flex justify-center">
@@ -120,7 +162,7 @@ const EventInfo = () => {
           XEM CHỈ ĐƯỜNG TRÊN GOOGLE MAPS
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

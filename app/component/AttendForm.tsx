@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import { motion } from "motion/react";
 
 const AttendForm = () => {
   const [name, setName] = useState("");
@@ -14,9 +15,15 @@ const AttendForm = () => {
   }
 
   return (
-    <section
-      className="mx-4 mt-18 mb-8 rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
+    <motion.section
+      className="mx-4 mt-18 mb-8 font-essendine rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
       aria-labelledby="attend-form-title"
+      initial={{ y: 200, opacity: 0.5 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{
+        once: true,
+      }}
+      transition={{ duration: 1, ease: "easeOut" }}
     >
       <h2
         id="attend-form-title"
@@ -46,7 +53,7 @@ const AttendForm = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Số điện thoại:"
-          className="w-full rounded-full border border-black bg-white px-5 py-3 text-sm text-black italic outline-none placeholder:text-[#A0A0A0] placeholder:italic focus-visible:ring-2 focus-visible:ring-black/15"
+          className="w-full rounded-full border placeholder:capitalize border-black bg-white px-5 py-3 text-[12px] text-black italic outline-none placeholder:text-[#A0A0A0] focus-visible:ring-2 focus-visible:ring-black/15"
         />
 
         <p className="px-1 text-center text-xs italic leading-relaxed text-black">
@@ -93,7 +100,7 @@ const AttendForm = () => {
           </span>
         </div>
       </form>
-    </section>
+    </motion.section>
   );
 };
 

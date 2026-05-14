@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { motion } from "motion/react";
+
 const COMMITTEE_ITEMS = [
   {
     name: "NGUYỄN TRIỆU MẪN",
@@ -72,54 +74,61 @@ const END_ITEMS = [
 const Committee = () => {
   return (
     <div className="w-full px-1 shadow-2xl mt-36">
-      <div
-        className="w-full text-center py-10 text-xl"
-        style={{ fontFamily: "UTM Essendine CapsBold.ttf" }}
-      >
+      <div className="w-full text-center py-10 text-xl font-essendine">
         BAN TỔ CHỨC
       </div>
-      <div className="w-full grid grid-cols-3 gap-x-1.5 gap-y-8">
-        {COMMITTEE_ITEMS.map((item) => (
-          <div
-            key={item.name}
-            className="flex flex-col items-center justify-center"
-          >
-            <img src={item.image} alt={item.name} className="rounded-xl" />
-            <div className="w-full flex flex-col items-center h-[60px]">
-              <div className="text-xs font-thin whitespace-nowrap py-2 text-[#ffffff] italic">
-                {item.name}
-              </div>
-              <div className="px-3 w-full">
-                <div className="border-t w-full border-white"></div>
-              </div>
-              <div className="text-[11px] font-light py-1 italic">
-                {item.position}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="w-full flex justify-center gap-1.5 mt-8">
-        {END_ITEMS.map((item) => (
-          <div
-            key={item.name}
-            className="w-1/3 flex flex-col items-center justify-center"
-          >
-            <img src={item.image} alt={item.name} className="rounded-xl" />
-            <div className="w-full flex flex-col items-center h-[60px]">
-              <div className="text-xs font-light whitespace-nowrap py-2 italic text-[#ffffff]">
-                {item.name}
-              </div>
-              <div className="px-3 w-full">
-                <div className="border-t w-full border-white"></div>
-              </div>
-              <div className="text-[11px] font-light py-1 italic">
-                {item.position}
+      <motion.div
+        className="w-full"
+        initial={{ y: 250, opacity: 0.5 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{
+          once: true,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        <div className="w-full grid grid-cols-3 gap-x-1.5 gap-y-8">
+          {COMMITTEE_ITEMS.map((item) => (
+            <div
+              key={item.name}
+              className="flex flex-col items-center justify-center"
+            >
+              <img src={item.image} alt={item.name} className="rounded-xl" />
+              <div className="w-full flex flex-col items-center h-[60px]">
+                <div className="text-xs font-thin whitespace-nowrap py-2 text-[#ffffff] italic">
+                  {item.name}
+                </div>
+                <div className="px-3 w-full">
+                  <div className="border-t w-full border-white"></div>
+                </div>
+                <div className="text-[11px] font-light py-1 italic">
+                  {item.position}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+        <div className="w-full flex justify-center gap-1.5 mt-8">
+          {END_ITEMS.map((item) => (
+            <div
+              key={item.name}
+              className="w-1/3 flex flex-col items-center justify-center"
+            >
+              <img src={item.image} alt={item.name} className="rounded-xl" />
+              <div className="w-full flex flex-col items-center h-[60px]">
+                <div className="text-xs font-light whitespace-nowrap py-2 italic text-[#ffffff]">
+                  {item.name}
+                </div>
+                <div className="px-3 w-full">
+                  <div className="border-t w-full border-white"></div>
+                </div>
+                <div className="text-[11px] font-light py-1 italic">
+                  {item.position}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 };
