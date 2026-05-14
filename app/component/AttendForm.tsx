@@ -59,12 +59,12 @@ const AttendForm = () => {
           className="w-full font-sans rounded-full border border-black bg-white px-5 py-3 text-black italic outline-none placeholder:text-[#A0A0A0] focus-visible:ring-2 focus-visible:ring-black/15"
         />
 
-        <p className="px-1 whitespace-nowrap text-center italic leading-relaxed text-black font-sans">
+        <p className="px-1 whitespace-nowrap text-center text-sm italic leading-relaxed text-black font-sans">
           Xác nhận tham gia Chương trình nghệ thuật Kén
         </p>
 
         <div className="rounded-full border border-black px-4 py-3 w-full">
-          <div className="flex flex-col gap-3 sm:flex-row items-center justify-between sm:gap-4">
+          <div className="flex gap-3 items-center justify-between sm:gap-4">
             <label className="flex cursor-pointer font-sans items-center gap-2.5 text-sm italic text-[#A0A0A0]">
               <input
                 type="checkbox"

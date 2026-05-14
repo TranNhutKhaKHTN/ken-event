@@ -10,7 +10,7 @@ import Navbar from "./component/Navbar";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-center bg-no-repeat bg-fixed overflow-y-auto">
+      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-cover bg-center bg-no-repeat bg-fixed overflow-y-auto">
         <Navbar />
         <div className="flex items-center flex-col justify-center pt-12">
           <motion.div
@@ -69,7 +69,7 @@ export default function Home() {
             />
           </div>
           <motion.div
-            className="absolute left-0 top-[-80px] z-20"
+            className="absolute left-0 top-[-40px] z-20"
             initial={{ x: -200, opacity: 0.1 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 2.5, ease: "easeOut", delay: 0.2 }}
@@ -77,7 +77,7 @@ export default function Home() {
             <Flower />
           </motion.div>
           <div
-            className="absolute right-0 top-[-80px] z-10"
+            className="absolute right-0 top-[-40px] z-10"
             style={{ transform: "scaleX(-1)" }}
             // initial={{ x: 200, opacity: 0.1 }}
             // animate={{ x: 0, opacity: 1 }}

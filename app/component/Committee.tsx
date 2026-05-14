@@ -100,7 +100,7 @@ const Committee = () => {
                 <div className="px-3 w-full">
                   <div className="border-t w-full border-white"></div>
                 </div>
-                <div className="text-[11px] font-light py-1 italic">
+                <div className="text-[11px] font-light py-1 italic text-white">
                   {item.position}
                 </div>
               </div>
@@ -121,7 +121,7 @@ const Committee = () => {
                 <div className="px-3 w-full">
                   <div className="border-t w-full border-white"></div>
                 </div>
-                <div className="text-[11px] font-light py-1 italic">
+                <div className="text-[11px] font-light py-1 italic text-white">
                   {item.position}
                 </div>
               </div>

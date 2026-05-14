@@ -107,7 +107,7 @@ const EventInfo = () => {
         </motion.div>
         <motion.div
           className="min-w-0 flex-1 pt-0.5"
-          initial={{ x: 300, opacity: 0.1 }}
+          initial={{ x: 20, opacity: 0.1 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{
@@ -136,7 +136,7 @@ const EventInfo = () => {
         </motion.div>
         <motion.div
           className="min-w-0 flex-1 pt-0.5"
-          initial={{ x: 300, opacity: 0.1 }}
+          initial={{ x: 20, opacity: 0.1 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{
