@@ -16,7 +16,7 @@ const AttendForm = () => {
 
   return (
     <motion.section
-      className="mx-4 mt-18 mb-8 font-essendine rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
+      className="mx-4 mt-18 mb-8 font-essendine rounded-3xl bg-white px-3 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
       aria-labelledby="attend-form-title"
       initial={{ y: 200, opacity: 0.5 }}
       whileInView={{ y: 0, opacity: 1 }}
@@ -32,7 +32,10 @@ const AttendForm = () => {
         XÁC NHẬN THAM DỰ
       </h2>
 
-      <form onSubmit={onSubmit} className="mt-6 flex flex-col gap-4">
+      <form
+        onSubmit={onSubmit}
+        className="mt-6 flex flex-col items-center gap-4"
+      >
         <input
           id="attend-name"
           name="name"
@@ -41,7 +44,7 @@ const AttendForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Tên người tham dự:"
-          className="w-full rounded-full border border-black bg-white px-5 py-3 text-sm text-black italic outline-none placeholder:text-[#A0A0A0] placeholder:italic focus-visible:ring-2 focus-visible:ring-black/15"
+          className="w-full rounded-full border font-sans border-black bg-white px-5 py-3 text-black italic outline-none placeholder:text-[#A0A0A0] placeholder:italic focus-visible:ring-2 focus-visible:ring-black/15"
         />
 
         <input
@@ -53,16 +56,16 @@ const AttendForm = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Số điện thoại:"
-          className="w-full rounded-full border placeholder:capitalize border-black bg-white px-5 py-3 text-[12px] text-black italic outline-none placeholder:text-[#A0A0A0] focus-visible:ring-2 focus-visible:ring-black/15"
+          className="w-full font-sans rounded-full border border-black bg-white px-5 py-3 text-black italic outline-none placeholder:text-[#A0A0A0] focus-visible:ring-2 focus-visible:ring-black/15"
         />
 
-        <p className="px-1 text-center text-xs italic leading-relaxed text-black">
+        <p className="px-1 whitespace-nowrap text-center italic leading-relaxed text-black font-sans">
           Xác nhận tham gia Chương trình nghệ thuật Kén
         </p>
 
-        <div className="rounded-full border border-black px-4 py-3">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-around sm:gap-4">
-            <label className="flex cursor-pointer items-center gap-2.5 text-sm italic text-[#A0A0A0]">
+        <div className="rounded-full border border-black px-4 py-3 w-full">
+          <div className="flex flex-col gap-3 sm:flex-row items-center justify-between sm:gap-4">
+            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-sm italic text-[#A0A0A0]">
               <input
                 type="checkbox"
                 checked={attendance === "attend"}
@@ -73,7 +76,7 @@ const AttendForm = () => {
               />
               Tham dự
             </label>
-            <label className="flex cursor-pointer items-center gap-2.5 text-sm italic text-[#A0A0A0]">
+            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-sm italic text-[#A0A0A0]">
               <input
                 type="checkbox"
                 checked={attendance === "definite"}

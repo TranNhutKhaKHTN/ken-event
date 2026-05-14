@@ -72,7 +72,7 @@ function MapPinIcon() {
 const EventInfo = () => {
   return (
     <motion.section
-      className="mx-4 font-essendine mt-10 mb-8 rounded-3xl bg-white px-5 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+      className="mx-4 font-essendine mt-10 mb-8 rounded-3xl bg-white px-3 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       aria-labelledby="event-info-title"
       initial={{ y: 200, opacity: 0.5 }}
       whileInView={{ y: 0, opacity: 1 }}
