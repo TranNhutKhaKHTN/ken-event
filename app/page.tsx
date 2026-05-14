@@ -44,14 +44,14 @@ export default function Home() {
         </div>
         <div className="relative flex items-center flex-col justify-center">
           <motion.div
-            className="capitalize text-md font-light italic mt-14 z-40"
+            className="capitalize text-md font-light italic mt-14 z-40 text-white"
             initial={{ y: 20, opacity: 0.1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
           >
             Trân trọng kính mời:
           </motion.div>
-          <div className="w-full flex items-center flex-col justify-center mt-4 z-40">
+          <div className="w-full flex items-center flex-col justify-center mt-4 z-40 text-white">
             <motion.div
               className="text-xl"
               style={{ fontFamily: "cursive" }}
