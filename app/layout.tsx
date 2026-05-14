@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ken-event.vercel.app"),
+  metadataBase: new URL("https://ken-event.alosan.vn"),
   title: "Kén - Rực rỡ hay không là nhờ?",
   description: "Sự kiện Kén - Rực rỡ hay không là nhờ?",
   icons: {
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     apple: [{ url: "/favicon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
-    images: [{ url: "https://ken-event.vercel.app/og-image.png" }],
+    images: [{ url: "https://ken-event.alosan.vn/og-image.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["https://ken-event.vercel.app/og-image.png"],
+    images: ["https://ken-event.alosan.vn/og-image.png"],
   },
 };
 
