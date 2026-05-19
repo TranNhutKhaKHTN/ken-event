@@ -10,7 +10,7 @@ import Navbar from "./component/Navbar";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-cover bg-center bg-no-repeat bg-fixed overflow-y-auto">
+      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-center bg-fixed overflow-y-auto">
         <Navbar />
         <div className="flex items-center flex-col justify-center pt-12">
           <motion.div
@@ -61,6 +61,9 @@ export default function Home() {
             >
               Quý Khách
             </motion.div>
+            <div className="text-white text-center text-2xl">
+              Chỗ này làm cái thiệp bay bay animation
+            </div>
             <motion.div
               className="border-t border-dotted w-[240px] mx-auto translate-y-[-6px] h-[1.5px]"
               initial={{ scale: 0.2, opacity: 0.3, y: 20 }}
@@ -92,7 +95,12 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+        <img src="/poster.jpeg" className="mt-[92px]" />
+        <div className="text-center text-2xl mt-10">
+          Chỗ này thêm cái danh sách nghệ sĩ
+        </div>
         <Committee />
+
         <EventInfo />
         <AttendForm />
       </div>
