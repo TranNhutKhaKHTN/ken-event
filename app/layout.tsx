@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ken-event.alosan.vn"),
-  title: "Kén - Rực rỡ hay không là do...?",
-  description: "Sự kiện Kén - Rực rỡ hay không là do...?",
+  title: "Kén - Rực rỡ hay không là do...",
+  description: "Sự kiện Kén - Rực rỡ hay không là do...",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: [{ url: "/favicon.png", type: "image/png", sizes: "180x180" }],
