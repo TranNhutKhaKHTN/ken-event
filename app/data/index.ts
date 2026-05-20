@@ -1,15 +1,17 @@
 const ns = (filename: string) => `/ns/${encodeURIComponent(filename)}`;
 const invite = (filename: string) => `/invite/${encodeURIComponent(filename)}`;
 
-function slugify(name: string): string {
-  return name
+function slugify(name: string, title: string): string {
+  return [title, name]
+    .join("-")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/đ/g, "d")
     .replace(/Đ/g, "D")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+    .replace(/^-|-$/g, "")
+    .replace(/-+/g, "-");
 }
 
 export type Inviter = {
@@ -150,7 +152,7 @@ const INVITER_ENTRIES = [
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(
   ({ title, name, file }) => ({
-    slug: slugify(name),
+    slug: slugify(name, title),
     title,
     name,
     img: invite(file),
