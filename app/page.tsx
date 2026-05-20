@@ -12,10 +12,14 @@ import { NS, NS1 } from "./data/index";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed overflow-y-auto">
+    <div className="min-h-screen bg-white relative">
+      <img
+        src="/bg-all.png"
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      />
+      <div className="max-w-[420px] absolute inset-0 overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-contain bg-top bg-fixed overflow-y-auto">
         <Navbar />
-        <div className="flex items-center flex-col justify-center pt-12">
+        <div className="flex items-center flex-col justify-center pt-12 min-h-[480px]">
           <motion.div
             initial={{ y: -30, opacity: 0.1 }}
             animate={{ y: 0, opacity: 1 }}
