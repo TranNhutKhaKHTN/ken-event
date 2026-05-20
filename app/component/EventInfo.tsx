@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=" +
+  "https://maps.app.goo.gl/tjnNwG4PQiekVNKr5?g_st=ic" +
   encodeURIComponent(
     "200 Nguyễn Duy Trinh, Phường Bình Trưng, Thành phố Hồ Chí Minh",
   );
@@ -117,7 +117,7 @@ const EventInfo = () => {
           <p className="text-[14px] uppercase leading-snug text-black">
             19:00 - CHỦ NHẬT
           </p>
-          <p className="mt-1 text-[11px] font-normal leading-relaxed text-neutral-800">
+          <p className="mt-1 text-[12px] font-normal leading-relaxed text-neutral-800">
             Ngày 14 tháng 06 năm 2026
           </p>
         </motion.div>
@@ -146,10 +146,24 @@ const EventInfo = () => {
           <p className="text-[14px]  uppercase leading-snug text-black">
             TRUNG TÂM CUNG ỨNG DỊCH VỤ CÔNG PHƯỜNG BÌNH TRƯNG
           </p>
-          <p className="mt-1 text-[11px] font-normal leading-relaxed text-neutral-800">
+          <p className="mt-1 text-[12px] font-normal leading-relaxed text-neutral-800">
             200 Nguyễn Duy Trinh, Phường Bình Trưng, TP. HCM
           </p>
         </motion.div>
+      </div>
+
+      <div className="relative w-full aspect-square rounded-2xl overflow-hidden mt-8">
+        {/* <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4730.721427811976!2d106.7791656!3d10.7880659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752683a8cc5ec7%3A0xf02379650c321db7!2zMjAwIE5ndXnhu4VuIER1eSBUcmluaCwgQsOsbmggVHLGsG5nLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e1!3m2!1svi!2s!4v1779285674032!5m2!1svi!2s"
+          // width="600"
+          // height="450"
+          className="w-full h-full rounded mt-4"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe> */}
+        <img src="/bando.jpg" className="w-full h-full object-cover" />
       </div>
 
       <div className="mt-8 flex justify-center">

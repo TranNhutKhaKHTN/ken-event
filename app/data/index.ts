@@ -21,3 +21,9 @@ export const NS1 = [
   { name: "SUSU", img: ns("NGHỆ SĨ XIẾC SUSU.jpg") },
   { name: "VŨ ĐOÀN GIÓ VIỆT", img: ns("VŨ ĐOÀN GIÓ VIỆT 1.jpg") },
 ] as const;
+
+export const MASTER = [
+  { name: "Anh Trọng", img: "/anh-Trong.jpeg" },
+  { name: "Anh Misel", img: "/anh-Misel.jpeg" },
+  { name: "Thầy Giang", img: "/thay-Giang.jpeg" },
+] as const;

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Image from "next/image";
 import { motion } from "motion/react";
 import AttendForm from "./component/AttendForm";
 import Committee from "./component/Committee";
@@ -8,7 +9,7 @@ import Flower from "./component/Flower";
 import GuestGreeting from "./component/GuestGreeting";
 import Navbar from "./component/Navbar";
 import QuestionForm from "./component/QuestionForm";
-import { NS, NS1 } from "./data/index";
+import { MASTER, NS, NS1 } from "./data/index";
 
 export default function Home() {
   return (
@@ -38,10 +39,12 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 2.5, ease: "easeOut", delay: 0.1 }}
           >
-            <img
+            <Image
               src="/favicon.png"
-              className="w-[200px]"
+              width={200}
+              height={200}
               alt="FPT Polytechnic"
+              className="w-[200px] h-auto"
             />
           </motion.div>
         </div>
@@ -160,8 +163,37 @@ export default function Home() {
             ))}
           </div>
         </motion.section>
+        <motion.section className="grid grid-cols-3 gap-x-1.5 gap-y-6 mt-6 w-full px-1 justify-center">
+          {MASTER.map((item, index) => (
+            <motion.div
+              key={item.name}
+              className="flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 28, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.08,
+              }}
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                className="w-full rounded-xl object-cover"
+              />
+              <div className="mt-2 px-0.5 uppercase text-[11px] font-semibold italic leading-snug text-white whitespace-nowrap">
+                {item.name}
+              </div>
+            </motion.div>
+          ))}
+        </motion.section>
         <Committee />
         <EventInfo />
+        <div className="flex flex-col gap-4 items-center justify-center bg-white rounded-2xl mx-5 px-3 pb-5 pt-7">
+          <img className="w-full rounded-2xl" src="/xe-1.jpg" />
+          <div className="text-black font-sans">Xe khởi hành lúc: 16:00</div>
+        </div>
         <AttendForm />
         {/* <QuestionForm /> */}
       </div>

@@ -9,6 +9,9 @@ const AttendForm = () => {
   const [attendance, setAttendance] = useState<"attend" | "definite" | null>(
     null,
   );
+  const [travelWithProgram, setTravelWithProgram] = useState<
+    "yes" | "no" | null
+  >(null);
   const [submitting, setSubmitting] = useState(false);
   const [showThanks, setShowThanks] = useState(false);
   const [notice, setNotice] = useState<{
@@ -32,6 +35,13 @@ const AttendForm = () => {
       });
       return;
     }
+    if (!travelWithProgram) {
+      setNotice({
+        kind: "err",
+        text: "Vui lòng chọn di chuyển xe cùng chương trình.",
+      });
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/attendance", {
@@ -41,6 +51,7 @@ const AttendForm = () => {
           name: n,
           phone: p,
           attendance,
+          travelWithProgram,
         }),
       });
       const data = (await res.json()) as { error?: string };
@@ -58,6 +69,7 @@ const AttendForm = () => {
       setName("");
       setPhone("");
       setAttendance(null);
+      setTravelWithProgram(null);
     } catch {
       setNotice({ kind: "err", text: "Mạng lỗi, thử lại sau." });
     } finally {
@@ -67,7 +79,7 @@ const AttendForm = () => {
 
   return (
     <motion.section
-      className="mx-4 mt-18 mb-8 font-essendine rounded-3xl bg-white px-3 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
+      className="mx-4 mt-8 mb-8 font-essendine rounded-3xl bg-white px-3 py-7 shadow-[0_8px_30px_rgba(75,44,130,0.22)]"
       aria-labelledby="attend-form-title"
       initial={{ y: 200, opacity: 0.5 }}
       whileInView={{ y: 0, opacity: 1 }}
@@ -138,6 +150,43 @@ const AttendForm = () => {
               />
               Không thể tham dự
             </label>
+          </div>
+        </div>
+
+        <div className="w-full space-y-1">
+          <p className="px-1 text-center text-sm italic leading-relaxed text-black font-sans">
+            Di chuyển xe cùng chương trình
+          </p>
+
+          <div className="rounded-full px-4 py-3 mt-3 w-full border border-black">
+            <div className="flex items-center justify-center gap-8">
+              <label className="flex cursor-pointer font-sans items-center gap-2.5 text-xs italic text-[#A0A0A0]">
+                <input
+                  type="checkbox"
+                  checked={travelWithProgram === "yes"}
+                  onChange={() =>
+                    setTravelWithProgram(
+                      travelWithProgram === "yes" ? null : "yes",
+                    )
+                  }
+                  className="size-4 shrink-0 rounded-sm border border-black accent-[#4B2C82]"
+                />
+                Có
+              </label>
+              <label className="flex cursor-pointer font-sans items-center gap-2.5 text-xs italic text-[#A0A0A0]">
+                <input
+                  type="checkbox"
+                  checked={travelWithProgram === "no"}
+                  onChange={() =>
+                    setTravelWithProgram(
+                      travelWithProgram === "no" ? null : "no",
+                    )
+                  }
+                  className="size-4 shrink-0 rounded-sm border border-black accent-[#4B2C82]"
+                />
+                Không
+              </label>
+            </div>
           </div>
         </div>
 

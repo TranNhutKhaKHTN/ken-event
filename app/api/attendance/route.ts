@@ -6,11 +6,18 @@ type Body = {
   name?: string;
   phone?: string;
   attendance?: "attend" | "definite";
+  travelWithProgram?: "yes" | "no";
 };
 
 function attendanceLabel(a: Body["attendance"]): string {
   if (a === "attend") return "Có thể tham dự";
   if (a === "definite") return "Không thể tham dự";
+  return "";
+}
+
+function travelWithProgramLabel(v: Body["travelWithProgram"]): string {
+  if (v === "yes") return "Có";
+  if (v === "no") return "Không";
   return "";
 }
 
@@ -28,6 +35,10 @@ export async function POST(request: Request) {
     body.attendance === "attend" || body.attendance === "definite"
       ? body.attendance
       : null;
+  const travelWithProgram =
+    body.travelWithProgram === "yes" || body.travelWithProgram === "no"
+      ? body.travelWithProgram
+      : null;
 
   if (!name || !phone) {
     return NextResponse.json(
@@ -38,6 +49,12 @@ export async function POST(request: Request) {
   if (!attendance) {
     return NextResponse.json(
       { error: "Please select an attendance option" },
+      { status: 400 },
+    );
+  }
+  if (!travelWithProgram) {
+    return NextResponse.json(
+      { error: "Please select a travel option" },
       { status: 400 },
     );
   }
@@ -54,8 +71,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const range = process.env.GOOGLE_SHEET_RANGE?.trim() || "participants!B:D";
-  const row = [name, phone, attendanceLabel(attendance)];
+  const range = process.env.GOOGLE_SHEET_RANGE?.trim() || "participants!B:E";
+  const row = [
+    name,
+    phone,
+    attendanceLabel(attendance),
+    travelWithProgramLabel(travelWithProgram),
+  ];
 
   try {
     await appendSheetRows({
