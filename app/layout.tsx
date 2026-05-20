@@ -10,12 +10,31 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: [{ url: "/favicon.png", type: "image/png", sizes: "180x180" }],
   },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    images: [{ url: "https://ken-event.alosan.vn/og-image.png" }],
+    type: "website",
+    locale: "vi_VN",
+    url: "/",
+    siteName: "Kén Event",
+    title: "Kén - Rực rỡ hay không là do...",
+    description: "Sự kiện Kén - Rực rỡ hay không là do...",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 840,
+        height: 766,
+        type: "image/png",
+        alt: "Kén - Chương trình nghệ thuật",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["https://ken-event.alosan.vn/og-image.png"],
+    title: "Kén - Rực rỡ hay không là do...",
+    description: "Sự kiện Kén - Rực rỡ hay không là do...",
+    images: ["/og-image.png"],
   },
 };
 
@@ -25,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full font-sans antialiased">
+    <html lang="vi" className="h-full font-sans antialiased">
       <head>
         <link
           rel="preload"
