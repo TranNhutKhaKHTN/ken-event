@@ -100,7 +100,7 @@ export default function Home() {
           <h2 className="text-center font-essendine text-2xl text-white">
             NGHỆ SĨ THAM GIA
           </h2>
-          <div className="mt-6 grid grid-cols-3 gap-x-1.5 gap-y-4">
+          <div className="mt-6 grid grid-cols-3 gap-x-1.5 gap-y-6">
             {NS.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -119,7 +119,7 @@ export default function Home() {
                   alt={item.name}
                   className="w-full rounded-xl object-cover"
                 />
-                <div className="mt-2 px-0.5 font-semibold text-[12px] italic leading-snug text-white">
+                <div className="mt-2 px-0.5 font-semibold text-[12px] italic leading-snug text-white whitespace-nowrap">
                   {item.name}
                 </div>
               </motion.div>
@@ -127,7 +127,7 @@ export default function Home() {
           </div>
         </motion.section>
         <motion.section
-          className="mt-12 w-full px-1 flex justify-center"
+          className="mt-6 w-full px-1 flex justify-center"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -153,7 +153,7 @@ export default function Home() {
                   alt={item.name}
                   className="w-full rounded-xl object-cover"
                 />
-                <div className="mt-2 px-0.5 text-[12px] font-semibold italic leading-snug text-white">
+                <div className="mt-2 px-0.5 text-[11px] font-semibold italic leading-snug text-white whitespace-nowrap">
                   {item.name}
                 </div>
               </motion.div>
