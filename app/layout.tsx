@@ -3,7 +3,7 @@ import "./globals.css";
 import { BG_ALL_URL } from "@/lib/preload-bg-image";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ken-event.alosan.vn"),
+  metadataBase: new URL("https://chuong-trinh-nghe-thuat-ken.alosan.vn"),
   title: "Kén - Rực rỡ hay không là do...",
   description: "Sự kiện Kén - Rực rỡ hay không là do...",
   icons: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Sự kiện Kén - Rực rỡ hay không là do...",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://chuong-trinh-nghe-thuat-ken.alosan.vn/og-image.png",
         width: 840,
         height: 766,
         type: "image/png",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kén - Rực rỡ hay không là do...",
     description: "Sự kiện Kén - Rực rỡ hay không là do...",
-    images: ["/og-image.png"],
+    images: ["https://chuong-trinh-nghe-thuat-ken.alosan.vn/og-image.png"],
   },
 };
 
@@ -46,12 +46,7 @@ export default function RootLayout({
   return (
     <html lang="vi" className="h-full font-sans antialiased">
       <head>
-        <link
-          rel="preload"
-          as="image"
-          href={BG_ALL_URL}
-          fetchPriority="high"
-        />
+        <link rel="preload" as="image" href={BG_ALL_URL} fetchPriority="high" />
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
