@@ -155,7 +155,7 @@ const AttendForm = () => {
 
         <div className="w-full space-y-1">
           <p className="px-1 text-center text-sm italic leading-relaxed text-black font-sans">
-            Di chuyển xe cùng chương trình
+            Di chuyển xe của Ban Tổ Chức?
           </p>
 
           <div className="rounded-full px-4 py-3 mt-3 w-full border border-black">

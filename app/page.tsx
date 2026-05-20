@@ -207,7 +207,13 @@ export default function Home() {
         <EventInfo />
         <div className="flex flex-col gap-4 items-center justify-center bg-white rounded-2xl mx-5 px-3 pb-5 pt-7">
           <img className="w-full rounded-2xl" src="/xe-1.jpg" />
-          <div className="text-black font-sans">Xe khởi hành lúc: 16:00</div>
+          <div className="text-black font-sans font-medium">
+            Xe khởi hành lúc: 16:00
+          </div>
+          <div className="text-black font-sans text-center text-sm">
+            Địa điểm xuất phát: Tại Toà T, Trường Cao đẳng FPT Polytechnic cơ sở
+            TP. Hồ Chí Minh
+          </div>
         </div>
         <AttendForm />
         {/* <QuestionForm /> */}
