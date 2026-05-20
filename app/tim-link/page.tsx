@@ -22,6 +22,8 @@ export default function TimLinkPage() {
   const [query, setQuery] = useState("");
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
+  console.log(INVITERS);
+
   const inviters = useMemo(
     () =>
       [...INVITERS].sort((a, b) =>
