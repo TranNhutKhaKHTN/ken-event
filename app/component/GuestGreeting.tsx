@@ -23,7 +23,7 @@ const GuestGreeting = () => {
         <motion.div
           className="absolute left-4 right-4 bottom-6! h-[360px] overflow-hidden rounded-sm px-4 py-5 bg-white/95 shadow-inner"
           initial={{ y: "100%", opacity: 0 }}
-          animate={true ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
         >
           <div className="text-center text-xs font-bold text-black">
@@ -60,7 +60,7 @@ const GuestGreeting = () => {
         className="absolute top-0 left-0 right-0 translate-y-[2px] h-[105px] origin-top z-10"
         style={{ transformStyle: "preserve-3d" }}
         initial={{ rotateX: 0 }}
-        animate={true ? { rotateX: 180 } : { rotateX: 0 }}
+        animate={isInView ? { rotateX: 180 } : { rotateX: 0 }}
         transition={{ duration: 0.7, ease: "easeInOut" }}
       >
         <div
