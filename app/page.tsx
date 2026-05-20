@@ -12,8 +12,8 @@ import { NS, NS1 } from "./data/index";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed overflow-y-auto">
+    <div className="min-h-screen bg-white overflow-y-auto">
+      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed">
         <Navbar />
         <div className="flex items-center flex-col justify-center pt-12 min-h-[480px]">
           <motion.div
