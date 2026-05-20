@@ -46,7 +46,7 @@ export default function EventPage({ inviter }: EventPageProps) {
             initial={{ y: -30, opacity: 0.1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-            className="text-xs italic font-semibold text-center tracking-wider leading-5"
+            className="text-xs italic font-semibold text-white text-center tracking-wider leading-5"
           >
             THƯ MỜI THAM DỰ <br /> CHƯƠNG TRÌNH NGHỆ THUẬT
           </motion.div>
