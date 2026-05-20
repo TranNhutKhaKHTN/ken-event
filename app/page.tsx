@@ -6,11 +6,13 @@ import Committee from "./component/Committee";
 import EventInfo from "./component/EventInfo";
 import Flower from "./component/Flower";
 import Navbar from "./component/Navbar";
+import QuestionForm from "./component/QuestionForm";
+import { NS, NS1 } from "./data/index";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-cover bg-center bg-no-repeat bg-fixed overflow-y-auto">
+      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 h-screen w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed overflow-y-auto">
         <Navbar />
         <div className="flex items-center flex-col justify-center pt-12">
           <motion.div
@@ -92,9 +94,75 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+        <motion.img
+          src="/poster.jpeg"
+          className="mt-[128px]"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{
+            once: true,
+          }}
+          transition={{ duration: 2, ease: "easeOut" }}
+        />
+        <motion.section
+          className="mt-10 w-full px-1"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          aria-label="Nghệ sĩ"
+        >
+          <h2 className="text-center font-essendine text-2xl text-white">
+            NGHỆ SĨ THAM GIA
+          </h2>
+          <div className="mt-6 grid grid-cols-3 gap-x-1.5 gap-y-4">
+            {NS.map((item) => (
+              <div
+                key={item.name}
+                className="flex flex-col items-center text-center"
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full rounded-xl object-cover"
+                />
+                <div className="mt-2 px-0.5 font-semibold text-[12px] italic leading-snug text-white">
+                  {item.name}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+        <motion.section
+          className="mt-10 w-full px-1 flex justify-center"
+          initial={{ opacity: 0, y: 48 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          aria-label="Nghệ sĩ"
+        >
+          <div className="flex justify-center gap-x-1.5">
+            {NS1.map((item) => (
+              <div
+                key={item.name}
+                className="flex flex-col items-center text-center w-1/3"
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full rounded-xl object-cover"
+                />
+                <div className="mt-2 px-0.5 text-[12px] font-semibold italic leading-snug text-white">
+                  {item.name}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
         <Committee />
         <EventInfo />
         <AttendForm />
+        <QuestionForm />
       </div>
     </div>
   );

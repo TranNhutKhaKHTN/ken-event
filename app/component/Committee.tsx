@@ -73,7 +73,7 @@ const END_ITEMS = [
 
 const Committee = () => {
   return (
-    <div className="w-full px-1 shadow-2xl mt-36">
+    <div className="w-full px-1 shadow-2xl mt-16">
       <div className="w-full text-center py-10 text-xl font-essendine text-white">
         BAN TỔ CHỨC
       </div>

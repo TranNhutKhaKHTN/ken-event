@@ -4,16 +4,8 @@ import { appendSheetRows } from "@/lib/google-sheet-append";
 import { formatSheetTimestamp } from "@/lib/format-sheet-timestamp";
 
 type Body = {
-  name?: string;
-  phone?: string;
-  attendance?: "attend" | "definite";
+  question?: string;
 };
-
-function attendanceLabel(a: Body["attendance"]): string {
-  if (a === "attend") return "Tham dự";
-  if (a === "definite") return "Chắc chắn tham dự";
-  return "";
-}
 
 export async function POST(request: Request) {
   let body: Body;
@@ -23,22 +15,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const name = typeof body.name === "string" ? body.name.trim() : "";
-  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
-  const attendance =
-    body.attendance === "attend" || body.attendance === "definite"
-      ? body.attendance
-      : null;
+  const question =
+    typeof body.question === "string" ? body.question.trim() : "";
 
-  if (!name || !phone) {
+  if (!question) {
     return NextResponse.json(
-      { error: "Name and phone are required" },
-      { status: 400 },
-    );
-  }
-  if (!attendance) {
-    return NextResponse.json(
-      { error: "Please select an attendance option" },
+      { error: "Question is required" },
       { status: 400 },
     );
   }
@@ -55,18 +37,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const range = process.env.GOOGLE_SHEET_RANGE?.trim() || "participants!A:D";
-  const row = [
-    formatSheetTimestamp(),
-    name,
-    phone,
-    attendanceLabel(attendance),
-  ];
+  const row = [formatSheetTimestamp(), question];
 
   try {
     await appendSheetRows({
       spreadsheetId,
-      range,
+      range: "questions!A:B",
       values: [row],
       clientEmail,
       privateKeyPem,
