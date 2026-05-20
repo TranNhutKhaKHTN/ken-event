@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import AttendForm from "./component/AttendForm";
@@ -10,11 +11,25 @@ import GuestGreeting from "./component/GuestGreeting";
 import Navbar from "./component/Navbar";
 import QuestionForm from "./component/QuestionForm";
 import { MASTER, NS, NS1 } from "./data/index";
+import { BG_ALL_URL, preloadBgAllImage } from "@/lib/preload-bg-image";
 
 export default function Home() {
+  const [bgReady, setBgReady] = useState(false);
+
+  useEffect(() => {
+    preloadBgAllImage().then(() => setBgReady(true));
+  }, []);
+
+  if (!bgReady) {
+    return <div className="min-h-screen bg-white" aria-busy="true" />;
+  }
+
   return (
     <div className="min-h-screen bg-white overflow-y-auto">
-      <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed">
+      <div
+        className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 w-full mx-auto bg-contain bg-top bg-fixed"
+        style={{ backgroundImage: `url('${BG_ALL_URL}')` }}
+      >
         <Navbar />
         <div className="flex items-center flex-col justify-center pt-12 min-h-[480px]">
           <motion.div

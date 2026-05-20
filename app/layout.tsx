@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BG_ALL_URL } from "@/lib/preload-bg-image";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ken-event.alosan.vn"),
@@ -25,6 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full font-sans antialiased">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href={BG_ALL_URL}
+          fetchPriority="high"
+        />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
       </body>
