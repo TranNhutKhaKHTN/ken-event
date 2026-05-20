@@ -14,13 +14,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white overflow-y-auto">
       <div className="max-w-[420px] overflow-x-hidden pb-[400px] pt-1 w-full mx-auto bg-[url('/bg-all.png')] bg-contain bg-top bg-fixed">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="flex items-center flex-col justify-center pt-12 min-h-[480px]">
           <motion.div
             initial={{ y: -30, opacity: 0.1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-            className="text-xs italic font-light text-center tracking-wider leading-5"
+            className="text-xs italic font-semibold text-center tracking-wider leading-5"
           >
             THƯ MỜI THAM DỰ <br /> CHƯƠNG TRÌNH NGHỆ THUẬT
           </motion.div>
