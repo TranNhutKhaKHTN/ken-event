@@ -87,10 +87,18 @@ const Committee = () => {
         transition={{ duration: 1.5 }}
       >
         <div className="w-full grid grid-cols-3 gap-x-1.5 gap-y-8">
-          {COMMITTEE_ITEMS.map((item) => (
-            <div
+          {COMMITTEE_ITEMS.map((item, index) => (
+            <motion.div
               key={item.name}
               className="flex flex-col items-center justify-center"
+              initial={{ opacity: 0, y: 28, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.08,
+              }}
             >
               <img src={item.image} alt={item.name} className="rounded-xl" />
               <div className="w-full flex flex-col items-center h-[60px]">
@@ -104,14 +112,22 @@ const Committee = () => {
                   {item.position}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         <div className="w-full flex justify-center gap-1.5 mt-8">
-          {END_ITEMS.map((item) => (
-            <div
+          {END_ITEMS.map((item, index) => (
+            <motion.div
               key={item.name}
               className="w-1/3 flex flex-col items-center justify-center"
+              initial={{ opacity: 0, y: 28, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.08,
+              }}
             >
               <img src={item.image} alt={item.name} className="rounded-xl" />
               <div className="w-full flex flex-col items-center h-[60px]">
@@ -125,7 +141,7 @@ const Committee = () => {
                   {item.position}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>

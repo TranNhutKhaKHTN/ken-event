@@ -5,6 +5,7 @@ import AttendForm from "./component/AttendForm";
 import Committee from "./component/Committee";
 import EventInfo from "./component/EventInfo";
 import Flower from "./component/Flower";
+import GuestGreeting from "./component/GuestGreeting";
 import Navbar from "./component/Navbar";
 import QuestionForm from "./component/QuestionForm";
 import { NS, NS1 } from "./data/index";
@@ -44,34 +45,18 @@ export default function Home() {
             />
           </motion.div>
         </div>
-        <div className="relative flex items-center flex-col justify-center">
-          <motion.div
-            className="capitalize text-md font-light italic mt-14 z-40 text-white"
+        <div className="relative flex items-center flex-col justify-center min-h-[280px] pb-4">
+          {/* <motion.div
+            className="capitalize text-md font-light italic mt-10 z-40 text-white"
             initial={{ y: 20, opacity: 0.1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
           >
             Trân trọng kính mời:
-          </motion.div>
-          <div className="w-full flex items-center flex-col justify-center mt-4 z-40 text-white">
-            <motion.div
-              className="text-xl"
-              style={{ fontFamily: "cursive" }}
-              initial={{ y: 20, opacity: 0.1 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-            >
-              Quý Khách
-            </motion.div>
-            <motion.div
-              className="border-t border-dotted w-[240px] mx-auto translate-y-[-6px] h-[1.5px]"
-              initial={{ scale: 0.2, opacity: 0.3, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-            />
-          </div>
+          </motion.div> */}
+          <GuestGreeting />
           <motion.div
-            className="absolute left-0 top-[-40px] z-20"
+            className="absolute left-0 top-[190px] z-40"
             initial={{ x: -200, opacity: 0.1 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 2.5, ease: "easeOut", delay: 0.2 }}
@@ -79,7 +64,7 @@ export default function Home() {
             <Flower />
           </motion.div>
           <div
-            className="absolute right-0 top-[-40px] z-10"
+            className="absolute right-0 top-[190px] z-40"
             style={{ transform: "scaleX(-1)" }}
             // initial={{ x: 200, opacity: 0.1 }}
             // animate={{ x: 0, opacity: 1 }}
@@ -96,7 +81,7 @@ export default function Home() {
         </div>
         <motion.img
           src="/poster.jpeg"
-          className="mt-[128px]"
+          className="mt-[200px] rounded"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{
@@ -116,10 +101,18 @@ export default function Home() {
             NGHỆ SĨ THAM GIA
           </h2>
           <div className="mt-6 grid grid-cols-3 gap-x-1.5 gap-y-4">
-            {NS.map((item) => (
-              <div
+            {NS.map((item, index) => (
+              <motion.div
                 key={item.name}
                 className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 28, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
               >
                 <img
                   src={item.img}
@@ -129,12 +122,12 @@ export default function Home() {
                 <div className="mt-2 px-0.5 font-semibold text-[12px] italic leading-snug text-white">
                   {item.name}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.section>
         <motion.section
-          className="mt-10 w-full px-1 flex justify-center"
+          className="mt-12 w-full px-1 flex justify-center"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -142,10 +135,18 @@ export default function Home() {
           aria-label="Nghệ sĩ"
         >
           <div className="flex justify-center gap-x-1.5">
-            {NS1.map((item) => (
-              <div
+            {NS1.map((item, index) => (
+              <motion.div
                 key={item.name}
-                className="flex flex-col items-center text-center w-1/3"
+                className="flex flex-col items-center text-center w-1/3 rounded-xl"
+                initial={{ opacity: 0, y: 28, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
               >
                 <img
                   src={item.img}
@@ -155,7 +156,7 @@ export default function Home() {
                 <div className="mt-2 px-0.5 text-[12px] font-semibold italic leading-snug text-white">
                   {item.name}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.section>
