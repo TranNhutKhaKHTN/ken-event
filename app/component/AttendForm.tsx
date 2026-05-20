@@ -94,7 +94,7 @@ const AttendForm = () => {
           autoComplete="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Tên người tham dự:"
+          placeholder="Họ và tên"
           className="w-full rounded-full border font-sans border-black bg-white px-5 py-3 text-black italic outline-none placeholder:text-[#A0A0A0] placeholder:italic focus-visible:ring-2 focus-visible:ring-black/15"
         />
 
@@ -116,7 +116,7 @@ const AttendForm = () => {
 
         <div className="rounded-full border border-black px-4 py-3 w-full">
           <div className="flex gap-3 items-center justify-between sm:gap-4">
-            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-sm italic text-[#A0A0A0]">
+            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-xs italic text-[#A0A0A0]">
               <input
                 type="checkbox"
                 checked={attendance === "attend"}
@@ -125,9 +125,9 @@ const AttendForm = () => {
                 }
                 className="size-4 shrink-0 rounded-sm border border-black accent-[#4B2C82]"
               />
-              Tham dự
+              Có thể tham dự
             </label>
-            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-sm italic text-[#A0A0A0]">
+            <label className="flex cursor-pointer font-sans items-center gap-2.5 text-xs italic text-[#A0A0A0]">
               <input
                 type="checkbox"
                 checked={attendance === "definite"}
@@ -136,7 +136,7 @@ const AttendForm = () => {
                 }
                 className="size-4 shrink-0 rounded-sm border border-black accent-[#4B2C82]"
               />
-              Chắc chắn tham dự
+              Không thể tham dự
             </label>
           </div>
         </div>

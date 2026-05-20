@@ -163,7 +163,7 @@ export default function Home() {
         <Committee />
         <EventInfo />
         <AttendForm />
-        <QuestionForm />
+        {/* <QuestionForm /> */}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 import { appendSheetRows } from "@/lib/google-sheet-append";
-import { formatSheetTimestamp } from "@/lib/format-sheet-timestamp";
 
 type Body = {
   question?: string;
@@ -37,12 +36,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const row = [formatSheetTimestamp(), question];
+  const row = [question];
 
   try {
     await appendSheetRows({
       spreadsheetId,
-      range: "questions!A:B",
+      range: "questions!B:B",
       values: [row],
       clientEmail,
       privateKeyPem,

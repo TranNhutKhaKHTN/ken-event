@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 import { appendSheetRows } from "@/lib/google-sheet-append";
-import { formatSheetTimestamp } from "@/lib/format-sheet-timestamp";
 
 type Body = {
   name?: string;
@@ -10,8 +9,8 @@ type Body = {
 };
 
 function attendanceLabel(a: Body["attendance"]): string {
-  if (a === "attend") return "Tham dự";
-  if (a === "definite") return "Chắc chắn tham dự";
+  if (a === "attend") return "Có thể tham dự";
+  if (a === "definite") return "Không thể tham dự";
   return "";
 }
 
@@ -55,13 +54,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const range = process.env.GOOGLE_SHEET_RANGE?.trim() || "participants!A:D";
-  const row = [
-    formatSheetTimestamp(),
-    name,
-    phone,
-    attendanceLabel(attendance),
-  ];
+  const range = process.env.GOOGLE_SHEET_RANGE?.trim() || "participants!B:D";
+  const row = [name, phone, attendanceLabel(attendance)];
 
   try {
     await appendSheetRows({

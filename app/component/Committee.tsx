@@ -5,7 +5,7 @@ const COMMITTEE_ITEMS = [
   {
     name: "NGUYỄN TRIỆU MẪN",
     position: (
-      <p className="text-center">
+      <p className="text-center text-[10px] font-semibold">
         TRƯỞNG BAN TỔ CHỨC <br /> TRƯỞNG BAN THIẾT KẾ
       </p>
     ),
@@ -15,7 +15,7 @@ const COMMITTEE_ITEMS = [
   {
     name: "LÊ PHI ANH",
     position: (
-      <p className="text-center">
+      <p className="text-center text-[10px] font-semibold">
         TRƯỞNG BAN TÀI CHÍNH <br /> TRƯỞNG BAN SẢN XUẤT
       </p>
     ),
@@ -25,7 +25,7 @@ const COMMITTEE_ITEMS = [
   {
     name: "QUÁCH BẢO GIA NGHI",
     position: (
-      <p className="text-center">
+      <p className="text-center text-[10px] font-semibold">
         TRƯỞNG BAN <br /> TRUYỀN THÔNG
       </p>
     ),
@@ -35,7 +35,7 @@ const COMMITTEE_ITEMS = [
   {
     name: "LƯƠNG YẾN VY",
     position: (
-      <p className="text-center">
+      <p className="text-center text-[10px] font-semibold">
         TRƯỞNG BAN <br /> NỘI DUNG
       </p>
     ),
@@ -44,13 +44,17 @@ const COMMITTEE_ITEMS = [
   },
   {
     name: "NGUYỄN THỊ ÁNH SÁNG",
-    position: <p className="text-center">BAN NỘI DUNG</p>,
+    position: (
+      <p className="text-center text-[10px] font-semibold">BAN NỘI DUNG</p>
+    ),
     image:
       "https://content.pancake.vn/web-media-262/27/74/e3/42/88ddeb41f97fb6abc5f7853ee99e6bde3a619e61fa4c7bdb92496c92-w:1080-h:1620-l:204186-t:image/jpeg.jpg",
   },
   {
     name: "TRẦN THỊ MỸ DUYÊN",
-    position: <p className="text-center">BAN NỘI DUNG</p>,
+    position: (
+      <p className="text-center text-[10px] font-semibold">BAN NỘI DUNG</p>
+    ),
     image:
       "https://content.pancake.vn/web-media-262/14/2b/95/3c/e9f7e57c072e3b548a86eed6642a07e6706b51edd90a7852f6819fa6-w:1080-h:1620-l:147970-t:image/jpeg.jpg",
   },
@@ -59,13 +63,17 @@ const COMMITTEE_ITEMS = [
 const END_ITEMS = [
   {
     name: "NGUYỄN THẾ QUYỀN ",
-    position: <p className="text-center">BAN HẬU CẦN</p>,
+    position: (
+      <p className="text-center text-[10px] font-semibold">BAN HẬU CẦN</p>
+    ),
     image:
       "https://content.pancake.vn/web-media-262/49/7b/00/ae/30410180a2f769a491f93bf3e034a57018706d42be12ead023bfa18e-w:1080-h:1620-l:131248-t:image/jpeg.jpeg",
   },
   {
     name: "LÂM QUỐC CƯỜNG",
-    position: <p className="text-center">BAN HẬU CẦN</p>,
+    position: (
+      <p className="text-center text-[10px] font-semibold">BAN HẬU CẦN</p>
+    ),
     image:
       "https://content.pancake.vn/web-media-262/af/ed/aa/2a/8e5a62450c7faf5ce4af7e8d769f4189de719a475574af17007cad10-w:1080-h:1620-l:122513-t:image/jpeg.jpg",
   },
@@ -102,7 +110,7 @@ const Committee = () => {
             >
               <img src={item.image} alt={item.name} className="rounded-xl" />
               <div className="w-full flex flex-col items-center h-[60px]">
-                <div className="text-xs font-thin whitespace-nowrap py-2 text-[#ffffff] italic">
+                <div className="text-xs font-semibold text-[11px] whitespace-nowrap py-1.5 text-[#ffffff] italic">
                   {item.name}
                 </div>
                 <div className="px-3 w-full">
