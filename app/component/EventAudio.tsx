@@ -20,6 +20,8 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const userPausedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const throttleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isThrottledRef = useRef(false);
 
   const startPlayback = useCallback((audio: HTMLAudioElement) => {
     const promise = audio.play();
@@ -55,9 +57,8 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
   }, [pause, startPlayback]);
 
   useEffect(() => {
-    const audio = new Audio(AUDIO_SRC);
-    audio.preload = "auto";
-    audioRef.current = audio;
+    const audio = audioRef.current;
+    if (!audio) return;
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
@@ -72,6 +73,17 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
     audio.addEventListener("timeupdate", onTimeUpdate);
 
     const onInteraction = (e: Event) => {
+      if (isThrottledRef.current) return;
+
+      isThrottledRef.current = true;
+      if (throttleTimerRef.current) {
+        clearTimeout(throttleTimerRef.current);
+      }
+      throttleTimerRef.current = setTimeout(() => {
+        isThrottledRef.current = false;
+        throttleTimerRef.current = null;
+      }, 200);
+
       const target = e.target as HTMLElement;
       if (target.closest("[data-audio-toggle]")) return;
       if (userPausedRef.current) return;
@@ -112,20 +124,30 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
       document.removeEventListener("wheel", onInteraction, { capture: true });
       document.removeEventListener("keydown", onInteraction, { capture: true });
       scrollRoot?.removeEventListener("scroll", onInteraction);
+      if (throttleTimerRef.current) {
+        clearTimeout(throttleTimerRef.current);
+      }
       audio.pause();
-      audioRef.current = null;
     };
   }, [scrollRootRef, startPlayback]);
 
   return (
-    <button
-      type="button"
-      data-audio-toggle
-      onClick={toggle}
-      aria-label={isPlaying ? "Tắt nhạc" : "Bật nhạc"}
-      className="fixed bottom-3 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full border border-white shadow-md backdrop-blur-sm"
-      style={{ left: "max(12px, calc(50% - 210px + 12px))" }}
-    >
+    <>
+      <audio
+        id="my-audio"
+        ref={audioRef}
+        src={AUDIO_SRC}
+        preload="auto"
+        className="hidden"
+      />
+      <button
+        type="button"
+        data-audio-toggle
+        onClick={toggle}
+        aria-label={isPlaying ? "Tắt nhạc" : "Bật nhạc"}
+        className="fixed bottom-3 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full border border-white shadow-md backdrop-blur-sm"
+        style={{ left: "max(12px, calc(50% - 210px + 12px))" }}
+      >
       <span
         className={`relative block text-[#4B2C82] ${isPlaying ? "animate-spin" : ""}`}
         style={{ animationDuration: "3s" }}
@@ -143,5 +165,6 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
         ) : null}
       </span>
     </button>
+    </>
   );
 }
