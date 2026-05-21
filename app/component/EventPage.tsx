@@ -11,6 +11,7 @@ import EventInfo from "./EventInfo";
 import Flower from "./Flower";
 import GuestGreeting from "./GuestGreeting";
 import Navbar from "./Navbar";
+import Sponsors from "./Sponsors";
 import { MASTER, NS, NS1, type Inviter } from "../data/index";
 import { BG_ALL_URL, preloadBgAllImage } from "@/lib/preload-bg-image";
 
@@ -220,8 +221,10 @@ export default function EventPage({ inviter }: EventPageProps) {
             </div>
           </div>
           <AttendForm />
-          <div className="h-40 overflow-hidden">
-            <img src="/don-vi-tai-tro.png" className="translate-y-[-60px]" />
+          {/* <Sponsors /> */}
+          <div className="relative">
+            <img src="tai-tro-2.png" />
+            <img src="/tai-tro.png" className="w-full absolute inset-0" />
           </div>
         </div>
       )}
