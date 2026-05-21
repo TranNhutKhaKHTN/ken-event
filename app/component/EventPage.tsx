@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import AttendForm from "./AttendForm";
@@ -19,7 +19,6 @@ type EventPageProps = {
 };
 
 export default function EventPage({ inviter }: EventPageProps) {
-  const pageRef = useRef<HTMLDivElement>(null);
   const [bgReady, setBgReady] = useState(false);
 
   useEffect(() => {
@@ -33,8 +32,8 @@ export default function EventPage({ inviter }: EventPageProps) {
   }, [inviter?.img]);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-white overflow-y-auto">
-      <EventAudio scrollRootRef={pageRef} />
+    <div className="min-h-screen bg-white overflow-y-auto">
+      <EventAudio />
       {!bgReady ? (
         <div className="min-h-screen" aria-busy="true" />
       ) : (

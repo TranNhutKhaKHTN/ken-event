@@ -5,59 +5,45 @@ import {
   useEffect,
   useRef,
   useState,
-  type RefObject,
 } from "react";
 
 const AUDIO_SRC = "/audio.mp3";
 const START_TIME = 73;
 const END_TIME = 129;
-const THROTTLE_MS = 200;
+const CLICK_AFTER_TOUCH_MS = 500;
 
-type EventAudioProps = {
-  scrollRootRef: RefObject<HTMLElement | null>;
-};
-
-export default function EventAudio({ scrollRootRef }: EventAudioProps) {
+export default function EventAudio() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const userPausedRef = useRef(false);
+  const lastTouchEndRef = useRef(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const throttleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isThrottledRef = useRef(false);
 
-  const clearThrottle = useCallback(() => {
-    if (throttleTimerRef.current) {
-      clearTimeout(throttleTimerRef.current);
-      throttleTimerRef.current = null;
+  const seekToStart = useCallback((audio: HTMLAudioElement) => {
+    if (audio.currentTime < START_TIME || audio.currentTime >= END_TIME) {
+      audio.currentTime = START_TIME;
     }
-    isThrottledRef.current = false;
   }, []);
-
-  const armThrottle = useCallback(() => {
-    isThrottledRef.current = true;
-    if (throttleTimerRef.current) {
-      clearTimeout(throttleTimerRef.current);
-    }
-    throttleTimerRef.current = setTimeout(clearThrottle, THROTTLE_MS);
-  }, [clearThrottle]);
 
   const startPlayback = useCallback(
     (audio: HTMLAudioElement) => {
-      const promise = audio.play();
-      if (!promise) return;
+      seekToStart(audio);
 
-      promise
-        .then(() => {
-          if (audio.currentTime < START_TIME || audio.currentTime >= END_TIME) {
-            audio.currentTime = START_TIME;
-          }
+      const playUnmuted = () =>
+        audio.play().then(() => {
           setIsPlaying(true);
-        })
-        .catch(() => {
-          setIsPlaying(false);
-          clearThrottle();
         });
+
+      playUnmuted().catch(() => {
+        audio.muted = true;
+        return playUnmuted().then(() => {
+          audio.muted = false;
+          setIsPlaying(true);
+        });
+      }).catch(() => {
+        setIsPlaying(false);
+      });
     },
-    [clearThrottle],
+    [seekToStart],
   );
 
   const pause = useCallback(() => {
@@ -83,6 +69,8 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
     const audio = audioRef.current;
     if (!audio) return;
 
+    audio.load();
+
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onTimeUpdate = () => {
@@ -90,18 +78,19 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
         audio.currentTime = START_TIME;
       }
     };
+    const onLoadedData = () => {
+      if (audio.paused) {
+        seekToStart(audio);
+      }
+    };
 
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("loadeddata", onLoadedData);
 
-    const shouldSkipInteraction = (e: Event) => {
-      if (e.type === "pointerdown") {
-        const pointer = e as PointerEvent;
-        if (pointer.pointerType === "touch") return true;
-      }
-
-      const target = e.target as HTMLElement;
+    const shouldSkip = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false;
       if (target.closest("[data-audio-toggle]")) return true;
       if (userPausedRef.current) return true;
 
@@ -112,45 +101,39 @@ export default function EventAudio({ scrollRootRef }: EventAudioProps) {
       );
     };
 
-    const onInteraction = (e: Event) => {
-      if (shouldSkipInteraction(e)) return;
-      if (isThrottledRef.current) return;
-
-      armThrottle();
+    const onDocumentTap = (e: Event) => {
+      if (shouldSkip(e.target)) return;
       startPlayback(audio);
     };
 
-    document.addEventListener("pointerdown", onInteraction, { capture: true });
-    document.addEventListener("touchstart", onInteraction, {
-      capture: true,
-      passive: true,
-    });
-    document.addEventListener("wheel", onInteraction, {
-      capture: true,
-      passive: true,
-    });
-    document.addEventListener("keydown", onInteraction, { capture: true });
+    const onTouchEnd = (e: TouchEvent) => {
+      lastTouchEndRef.current = Date.now();
+      onDocumentTap(e);
+    };
 
-    const scrollRoot = scrollRootRef.current;
-    scrollRoot?.addEventListener("scroll", onInteraction, { passive: true });
+    const onClick = (e: MouseEvent) => {
+      if (Date.now() - lastTouchEndRef.current < CLICK_AFTER_TOUCH_MS) {
+        return;
+      }
+      onDocumentTap(e);
+    };
+
+    document.addEventListener("touchend", onTouchEnd, {
+      capture: true,
+      passive: true,
+    });
+    document.addEventListener("click", onClick, { capture: true });
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("timeupdate", onTimeUpdate);
-      document.removeEventListener("pointerdown", onInteraction, {
-        capture: true,
-      });
-      document.removeEventListener("touchstart", onInteraction, {
-        capture: true,
-      });
-      document.removeEventListener("wheel", onInteraction, { capture: true });
-      document.removeEventListener("keydown", onInteraction, { capture: true });
-      scrollRoot?.removeEventListener("scroll", onInteraction);
-      clearThrottle();
+      audio.removeEventListener("loadeddata", onLoadedData);
+      document.removeEventListener("touchend", onTouchEnd, { capture: true });
+      document.removeEventListener("click", onClick, { capture: true });
       audio.pause();
     };
-  }, [armThrottle, clearThrottle, scrollRootRef, startPlayback]);
+  }, [seekToStart, startPlayback]);
 
   return (
     <>
