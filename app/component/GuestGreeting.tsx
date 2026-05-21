@@ -45,7 +45,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
               </div>
             </>
           ) : (
-            <motion.p
+            <motion.div
               className="flex h-full items-start pt-8 text-center text-sm leading-relaxed text-black"
               style={{ fontFamily: "cursive" }}
               initial={{ opacity: 0 }}
@@ -59,7 +59,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                   Thư mời đến tham dự chương trình nghệ thuật Kén
                 </div>
               </div>
-            </motion.p>
+            </motion.div>
           )}
         </motion.div>
         <div className="relative w-full h-full overflow-hidden">

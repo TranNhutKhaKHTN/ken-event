@@ -139,13 +139,13 @@ const Committee = () => {
             >
               <img src={item.image} alt={item.name} className="rounded-xl" />
               <div className="w-full flex flex-col items-center h-[60px]">
-                <div className="text-xs font-light whitespace-nowrap py-2 italic text-[#ffffff]">
+                <div className="text-xs font-semibold whitespace-nowrap py-2 italic text-[#ffffff]">
                   {item.name}
                 </div>
                 <div className="px-3 w-full">
                   <div className="border-t w-full border-white"></div>
                 </div>
-                <div className="text-[11px] font-light py-1 italic text-white">
+                <div className="text-[11px] font-semibold py-1 italic text-white">
                   {item.position}
                 </div>
               </div>
