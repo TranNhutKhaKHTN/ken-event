@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type RefObject,
 } from "react";
 
 const AUDIO_SRC = "/audio.mp3";
@@ -12,7 +13,11 @@ const START_TIME = 73;
 const END_TIME = 129;
 const CLICK_AFTER_TOUCH_MS = 500;
 
-export default function EventAudio() {
+type EventAudioProps = {
+  scrollRootRef: RefObject<HTMLElement | null>;
+};
+
+export default function EventAudio({ scrollRootRef }: EventAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const userPausedRef = useRef(false);
   const lastTouchEndRef = useRef(0);
@@ -33,15 +38,17 @@ export default function EventAudio() {
           setIsPlaying(true);
         });
 
-      playUnmuted().catch(() => {
-        audio.muted = true;
-        return playUnmuted().then(() => {
-          audio.muted = false;
-          setIsPlaying(true);
+      playUnmuted()
+        .catch(() => {
+          audio.muted = true;
+          return playUnmuted().then(() => {
+            audio.muted = false;
+            setIsPlaying(true);
+          });
+        })
+        .catch(() => {
+          setIsPlaying(false);
         });
-      }).catch(() => {
-        setIsPlaying(false);
-      });
     },
     [seekToStart],
   );
@@ -89,9 +96,7 @@ export default function EventAudio() {
     audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadeddata", onLoadedData);
 
-    const shouldSkip = (target: EventTarget | null) => {
-      if (!(target instanceof HTMLElement)) return false;
-      if (target.closest("[data-audio-toggle]")) return true;
+    const shouldSkipPlayback = () => {
       if (userPausedRef.current) return true;
 
       return (
@@ -101,8 +106,19 @@ export default function EventAudio() {
       );
     };
 
+    const shouldSkipTap = (target: EventTarget | null) => {
+      if (shouldSkipPlayback()) return true;
+      if (!(target instanceof HTMLElement)) return false;
+      return Boolean(target.closest("[data-audio-toggle]"));
+    };
+
     const onDocumentTap = (e: Event) => {
-      if (shouldSkip(e.target)) return;
+      if (shouldSkipTap(e.target)) return;
+      startPlayback(audio);
+    };
+
+    const onScroll = () => {
+      if (shouldSkipPlayback()) return;
       startPlayback(audio);
     };
 
@@ -124,6 +140,9 @@ export default function EventAudio() {
     });
     document.addEventListener("click", onClick, { capture: true });
 
+    const scrollRoot = scrollRootRef.current;
+    scrollRoot?.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
@@ -131,9 +150,10 @@ export default function EventAudio() {
       audio.removeEventListener("loadeddata", onLoadedData);
       document.removeEventListener("touchend", onTouchEnd, { capture: true });
       document.removeEventListener("click", onClick, { capture: true });
+      scrollRoot?.removeEventListener("scroll", onScroll);
       audio.pause();
     };
-  }, [seekToStart, startPlayback]);
+  }, [scrollRootRef, seekToStart, startPlayback]);
 
   return (
     <>
@@ -150,7 +170,7 @@ export default function EventAudio() {
         data-audio-toggle
         onClick={toggle}
         aria-label={isPlaying ? "Tắt nhạc" : "Bật nhạc"}
-        className="fixed bottom-3 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full border border-white shadow-md backdrop-blur-sm"
+        className="fixed bottom-3 z-[1000] flex size-10 cursor-pointer items-center justify-center rounded-full border border-white shadow-md backdrop-blur-sm"
         style={{ left: "max(12px, calc(50% - 210px + 12px))" }}
       >
         <span
