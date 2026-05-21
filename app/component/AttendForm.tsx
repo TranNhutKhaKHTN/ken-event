@@ -242,7 +242,7 @@ const AttendForm = () => {
                 Cảm ơn bạn!
               </p>
               <p className="mt-3 font-sans text-sm leading-relaxed text-black">
-                Xác nhận tham dự của bạn đã được ghi nhận. Hẹn gặp bạn tại
+                Xác nhận tham dự của quý khách đã được ghi nhận. Hẹn gặp bạn tại
                 chương trình nghệ thuật Kén.
               </p>
               <button

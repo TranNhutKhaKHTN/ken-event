@@ -44,7 +44,23 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                 {inviter.title} {inviter.name}
               </div>
             </>
-          ) : null}
+          ) : (
+            <motion.p
+              className="flex h-full items-start pt-8 text-center text-sm leading-relaxed text-black"
+              style={{ fontFamily: "cursive" }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              <div className="space-y-6">
+                <div className="text-xl text-gray-600"> Kính gửi</div>
+                <div className="text-2xl">Quý Thầy Cô</div>
+                <div className="text-lg text-gray-600">
+                  Thư mời đến tham dự chương trình nghệ thuật Kén
+                </div>
+              </div>
+            </motion.p>
+          )}
         </motion.div>
         <div className="relative w-full h-full overflow-hidden">
           <img src="/thiep.png" className="w-[300%] scale-[1.18]" alt="" />

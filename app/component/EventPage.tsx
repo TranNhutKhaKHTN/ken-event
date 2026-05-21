@@ -218,6 +218,9 @@ export default function EventPage({ inviter }: EventPageProps) {
           </div>
         </div>
         <AttendForm />
+        <div className="h-40 overflow-hidden">
+          <img src="/don-vi-tai-tro.png" className="translate-y-[-60px]" />
+        </div>
       </div>
     </div>
   );

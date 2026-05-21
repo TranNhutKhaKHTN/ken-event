@@ -148,6 +148,11 @@ const INVITER_ENTRIES = [
     name: "Nguyễn Thị Diễm Phương",
     file: "Thư mời ThS. Nguyễn Thị Diễm Phương.png",
   },
+  {
+    title: "Thầy",
+    name: "Trần Vân Nam",
+    file: "Thư mời Thầy Trần Vân Nam.png",
+  },
 ] as const;
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(
