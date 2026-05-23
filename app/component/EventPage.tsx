@@ -223,7 +223,7 @@ export default function EventPage({ inviter }: EventPageProps) {
           <AttendForm />
           {/* <Sponsors /> */}
           <div className="relative">
-            <img src="tai-tro-2.png" />
+            <img src="/tai-tro-2.png" />
             <img src="/tai-tro.png" className="w-full absolute inset-0" />
           </div>
         </div>
