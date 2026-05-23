@@ -13,6 +13,9 @@ type GuestGreetingProps = {
 const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const greetingName = inviter
+    ? (inviter.displayName ?? `${inviter.title} ${inviter.name}`.trim())
+    : "";
 
   return (
     <div
@@ -31,7 +34,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
             <>
               <motion.img
                 src={inviter.img}
-                alt={`Thư mời ${inviter.title} ${inviter.name}`}
+                alt={`Thư mời ${greetingName}`}
                 className="rounded w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -41,7 +44,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                 className="text-black text-center py-4 text-lg"
                 style={{ fontFamily: "cursive" }}
               >
-                {inviter.title} {inviter.name}
+                {greetingName}
               </div>
             </>
           ) : (

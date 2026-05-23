@@ -1,5 +1,6 @@
 const ns = (filename: string) => `/ns/${encodeURIComponent(filename)}`;
 const invite = (filename: string) => `/invite/${encodeURIComponent(filename)}`;
+const publicImg = (filename: string) => `/${encodeURIComponent(filename)}`;
 
 function slugify(name: string, title: string): string {
   return [title, name]
@@ -19,6 +20,15 @@ export type Inviter = {
   title: string;
   name: string;
   img: string;
+  displayName?: string;
+};
+
+type InviterEntry = {
+  title: string;
+  name: string;
+  file: string;
+  displayName?: string;
+  inPublicRoot?: boolean;
 };
 
 const INVITER_ENTRIES = [
@@ -153,14 +163,36 @@ const INVITER_ENTRIES = [
     name: "Trần Vân Nam",
     file: "Thư mời Thầy Trần Vân Nam.png",
   },
-] as const;
+  {
+    title: "",
+    name: "CÔNG TY TNHH MICRO SAAS ONE",
+    file: "THƯ MỜI CÔNG TY TNHH MICRO SAAS ONE  .png",
+    displayName: "Kính mời Quý Nhà tài trợ tham dự",
+    inPublicRoot: true,
+  },
+  {
+    title: "",
+    name: "CÔNG TY TNHH THU MUA HẢI SẢN VMV",
+    file: "Thư mời CÔNG TY TNHH THU MUA HẢI SẢN VMV.png",
+    displayName: "Kính mời Quý Nhà tài trợ tham dự",
+    inPublicRoot: true,
+  },
+  {
+    title: "",
+    name: "CÔNG TY TNHH WINDY LAND",
+    file: "Thư mời CÔNG TY TNHH WINDY LAND.png",
+    displayName: "Kính mời Quý Nhà tài trợ tham dự",
+    inPublicRoot: true,
+  },
+] as InviterEntry[];
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(
-  ({ title, name, file }) => ({
+  ({ title, name, file, displayName, inPublicRoot }) => ({
     slug: slugify(name, title),
     title,
     name,
-    img: invite(file),
+    displayName,
+    img: inPublicRoot ? publicImg(file) : invite(file),
   }),
 );
 

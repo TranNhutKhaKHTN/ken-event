@@ -120,7 +120,7 @@ export default function InviteLinkPage({
                 className="rounded-2xl border border-[#4B2C82]/15 bg-white p-4 shadow-sm"
               >
                 <div className="font-medium text-[#4B2C82]">
-                  {inviter.title} {inviter.name}
+                  {`${inviter.title} ${inviter.name}`.trim()}
                 </div>
                 <div className="mt-1 truncate text-xs text-[#888]">{path}</div>
                 <div className="mt-3 flex gap-2">
