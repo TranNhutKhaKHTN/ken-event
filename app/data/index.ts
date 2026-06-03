@@ -21,6 +21,7 @@ export type Inviter = {
   name: string;
   img: string;
   displayName?: string;
+  stackTitleName?: boolean;
 };
 
 type InviterEntry = {
@@ -29,6 +30,7 @@ type InviterEntry = {
   file: string;
   displayName?: string;
   inPublicRoot?: boolean;
+  stackTitleName?: boolean;
 };
 
 const INVITER_ENTRIES = [
@@ -115,6 +117,12 @@ const INVITER_ENTRIES = [
     file: "Thư mời Anh Ngô Minh Trọng.png",
   },
   {
+    title: "Chuyên gia âm thanh",
+    name: "Võ Phan Misel",
+    file: "Thư mời Chuyên Gia Âm Thanh Võ Phan Misel.jpeg",
+    stackTitleName: true,
+  },
+  {
     title: "ThS.",
     name: "Mai Tấn Thành",
     file: "Thư mời ThS. Mai Tấn Thành.png",
@@ -187,11 +195,12 @@ const INVITER_ENTRIES = [
 ] as InviterEntry[];
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(
-  ({ title, name, file, displayName, inPublicRoot }) => ({
+  ({ title, name, file, displayName, inPublicRoot, stackTitleName }) => ({
     slug: slugify(name, title),
     title,
     name,
     displayName,
+    stackTitleName,
     img: inPublicRoot ? publicImg(file) : invite(file),
   }),
 );

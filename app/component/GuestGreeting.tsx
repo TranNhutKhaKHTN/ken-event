@@ -25,7 +25,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
     >
       <div className="relative inset-0 rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.35)] z-20 bg-[#743ceb]/50">
         <motion.div
-          className="absolute left-4 right-4 bottom-6! h-[380px] overflow-hidden rounded-sm px-4 py-5 bg-white/95 shadow-inner"
+          className="absolute left-4 right-4 bottom-6! h-[390px] overflow-hidden rounded-sm px-4 py-5 bg-white/95 shadow-inner"
           initial={{ y: "100%", opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
@@ -44,7 +44,14 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                 className="text-black text-center py-4 text-lg"
                 style={{ fontFamily: "cursive" }}
               >
-                {greetingName}
+                {inviter.stackTitleName ? (
+                  <>
+                    <div>{inviter.title}</div>
+                    <div>{inviter.name}</div>
+                  </>
+                ) : (
+                  greetingName
+                )}
               </div>
             </>
           ) : (
