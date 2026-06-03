@@ -117,8 +117,8 @@ const INVITER_ENTRIES = [
     file: "Thư mời Anh Ngô Minh Trọng.png",
   },
   {
-    title: "Chuyên gia âm thanh",
-    name: "Võ Phan Misel",
+    title: "Võ Phan Misel",
+    name: "Chuyên gia âm thanh",
     file: "Thư mời Chuyên Gia Âm Thanh Võ Phan Misel.jpeg",
     stackTitleName: true,
   },
