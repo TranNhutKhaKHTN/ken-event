@@ -49,6 +49,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                     <div>{inviter.title}</div>
                     <div
                       className="text-[16px]"
+                      style={{ fontFamily: "emoji" }}
                       dangerouslySetInnerHTML={{ __html: inviter.name }}
                     />
                   </>
