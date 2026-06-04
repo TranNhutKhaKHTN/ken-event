@@ -197,6 +197,16 @@ const INVITER_ENTRIES = [
     displayName: "Kính mời Quý Nhà tài trợ tham dự",
     inPublicRoot: true,
   },
+  {
+    title: "MC",
+    name: "Huỳnh Ngân",
+    file: "Thư mời MC Huỳnh Ngân.jpeg",
+  },
+  {
+    title: "Các nhóm",
+    name: "Dự án tốt nghiệp",
+    file: "Thư mời Các nhóm Dự án tốt nghiệp.jpeg",
+  },
 ] as InviterEntry[];
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(

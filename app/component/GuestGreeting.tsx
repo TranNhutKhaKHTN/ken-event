@@ -20,7 +20,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
   return (
     <div
       ref={ref}
-      className="relative mt-60 z-40 w-[300px] h-[200px]"
+      className={`relative z-40 w-[300px] h-[200px] ${inviter?.stackTitleName ? "mt-64" : "mt-60"}`}
       style={{ perspective: "800px" }}
     >
       <div className="relative inset-0 rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.35)] z-20 bg-[#743ceb]/50">
