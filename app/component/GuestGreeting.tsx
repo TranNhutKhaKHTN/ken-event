@@ -25,7 +25,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
     >
       <div className="relative inset-0 rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.35)] z-20 bg-[#743ceb]/50">
         <motion.div
-          className="absolute left-4 right-4 bottom-6! h-[390px] overflow-hidden rounded-sm px-4 py-5 bg-white/95 shadow-inner"
+          className={`absolute left-4 right-4 bottom-6! overflow-hidden rounded-sm py-5 bg-white/95 shadow-inner ${inviter?.stackTitleName ? "h-[410px]" : "h-[380px]"}`}
           initial={{ y: "100%", opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
@@ -35,7 +35,7 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
               <motion.img
                 src={inviter.img}
                 alt={`Thư mời ${greetingName}`}
-                className="rounded w-full"
+                className="rounded w-full px-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 2 }}
@@ -47,7 +47,10 @@ const GuestGreeting = ({ inviter }: GuestGreetingProps) => {
                 {inviter.stackTitleName ? (
                   <>
                     <div>{inviter.title}</div>
-                    <div>{inviter.name}</div>
+                    <div
+                      className="text-[16px]"
+                      dangerouslySetInnerHTML={{ __html: inviter.name }}
+                    />
                   </>
                 ) : (
                   greetingName

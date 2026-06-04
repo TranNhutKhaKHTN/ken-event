@@ -46,7 +46,12 @@ const INVITER_ENTRIES = [
     name: "Nguyễn Minh Hiếu",
     file: "Thư mời Cô Nguyễn Minh Hiếu.png",
   },
-  { title: "Thầy", name: "Từ Minh Trị", file: "Thư mời Thầy Từ Minh Trị.png" },
+  {
+    title: "Thầy Từ Minh Trị",
+    name: "Trưởng Đại diện GOLDSTAR BG",
+    stackTitleName: true,
+    file: "Thư mời Thầy Từ Minh Trị Trưởng Đại diện - GOLDSTAR BG.jpeg",
+  },
   {
     title: "Thầy",
     name: "Nguyễn Phi Hậu",
