@@ -202,10 +202,16 @@ const INVITER_ENTRIES = [
     name: "Huỳnh Ngân",
     file: "Thư mời MC Huỳnh Ngân.jpeg",
   },
+  // {
+  //   title: "Các nhóm",
+  //   name: "Dự án tốt nghiệp",
+  //   file: "Thư mời Các nhóm Dự án tốt nghiệp.jpeg",
+  // },
   {
-    title: "Các nhóm",
-    name: "Dự án tốt nghiệp",
-    file: "Thư mời Các nhóm Dự án tốt nghiệp.jpeg",
+    title: "Những người bạn",
+    name: "thân yêu của Kén",
+    file: "Thư mời Những người bạn thân yêu của Kén.jpeg",
+    stackTitleName: true,
   },
 ] as InviterEntry[];
 
