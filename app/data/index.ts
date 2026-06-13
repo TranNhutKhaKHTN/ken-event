@@ -213,6 +213,27 @@ const INVITER_ENTRIES = [
     file: "Thư mời Những người bạn thân yêu của Kén.jpeg",
     stackTitleName: true,
   },
+  {
+    title: "",
+    name: "Team anh Minh Luân",
+    file: "Thư mời Team anh Minh Luân.png",
+    stackTitleName: true,
+  },
+  {
+    title: "",
+    name: "Chị Céline Phan",
+    file: "Thư mời Chị Céline Phan.png",
+  },
+  {
+    title: "",
+    name: "Anh Nhân Trần",
+    file: "Thư mời Anh Nhân Trần.png",
+  },
+  {
+    title: "",
+    name: "Anh Ander",
+    file: "Thư mời Anh Ander.png",
+  },
 ] as InviterEntry[];
 
 export const INVITERS: Inviter[] = INVITER_ENTRIES.map(
