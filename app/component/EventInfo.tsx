@@ -1,10 +1,6 @@
 import { motion } from "motion/react";
 
-const MAPS_URL =
-  "https://maps.app.goo.gl/tjnNwG4PQiekVNKr5?g_st=ic" +
-  encodeURIComponent(
-    "200 Nguyễn Duy Trinh, Phường Bình Trưng, Thành phố Hồ Chí Minh",
-  );
+const MAPS_URL = "https://maps.app.goo.gl/7hd7TvZwWdRKokbC6?g_st=ifm";
 
 function CalendarIcon() {
   return (
